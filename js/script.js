@@ -29,9 +29,8 @@ if (data) {
     list = JSON.parse(data);
     list.forEach(function(item) {
         addShopping(item.name, item.id, item.done, item.value);
-        atual(item.value);
     })
-    total = list.length;
+    totalCalc();
 } else {
     list = [];
 }
@@ -123,6 +122,7 @@ function popup(id) {
 function popupDone(id) {
     let currentArray = list.find(checkArray)
 
+
     function checkArray(currentArray) {
         return currentArray.id === id
     }
@@ -135,16 +135,38 @@ function popupDone(id) {
         popupDone.style.top = coordinates.top
         popupDone.style.right = coordinates.right
         mypopupDone.classList.toggle("show");
+    } else {
+        remove(id);
+
     }
 }
 
+function remove(id) {
+    let currentArray = list.find(checkArray)
+    var element = document.getElementById(id)
+    var text = document.getElementById('text' + id)
+
+    function checkArray(currentArray) {
+        return currentArray.id === id
+    }
+
+    document.getElementById(element.id).innerHTML = uncheckIcon;
+    currentArray.done = false;
+    element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn";
+    element.parentNode.querySelector('.text').classList = "text";
+    text.contentEditable = true;
+    saveLocal();
+}
+
+function totalCalc() {
+    let total = 0
+    list.filter(item => item.done == true).forEach(item => total += item.value)
+    spending.innerHTML = String(total).replace('.', ',');
+}
 //function to complete task
 function completeList(id, inputID) {
     var mypopupDone = document.getElementById("mypopupDone" + id);
     var price = parseFloat(inputID.value.trim().replace(',', '.'));
-    let oldPrice = parseFloat(spending.innerHTML.replace(',', '.'));
-    var totalPrice = (price + oldPrice).toFixed(2).replace('.', ',');
-    spending.innerHTML = totalPrice;
     var element = document.getElementById(id)
     let currentArray = list.find(checkArray)
     var check = document.getElementById(element.id).innerHTML;
@@ -153,25 +175,19 @@ function completeList(id, inputID) {
     function checkArray(currentArray) {
         return currentArray.id === id
     }
-    if (currentArray.done == false) {
-        if (check === checkIcon) {
-            document.getElementById(element.id).innerHTML = uncheckIcon;
-            currentArray.done = false;
-            element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn";
-            element.parentNode.querySelector('.text').classList = "text";
-            text.contentEditable = true;
-        } else {
-            document.getElementById(element.id).innerHTML = checkIcon
-            currentArray.done = true;
-            currentArray.value = price;
-            element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn checked";
-            element.parentNode.querySelector('.text').classList = "text lineThrough";
-            text.contentEditable = false;
-        }
-        mypopupDone.classList.toggle("show");
-        saveLocal();
 
-    }
+
+    document.getElementById(element.id).innerHTML = checkIcon
+    currentArray.done = true;
+    currentArray.value = price;
+    element.parentNode.querySelector('.checkBtn').classList = "material-icons checkBtn checked";
+    element.parentNode.querySelector('.text').classList = "text lineThrough";
+    text.contentEditable = false;
+
+    mypopupDone.classList.toggle("show");
+    saveLocal();
+
+
 }
 
 //function to remove task
@@ -214,4 +230,5 @@ function characterLimit(id) {
 
 function saveLocal() {
     localStorage.setItem('shoppingList', JSON.stringify(list));
+    totalCalc();
 }
