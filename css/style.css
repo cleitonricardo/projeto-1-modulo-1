@@ -1,0 +1,531 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap);
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    margin: 1.5vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 90vh;
+    background: #dcdcdc;
+    overflow-x: hidden;
+}
+
+.total {
+    width: 85%;
+    font-weight: bold;
+    font-size: 18px;
+    font-weight: bold;
+    font-size: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    width: 33%;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 40%;
+}
+
+.sifrao {
+    margin-left: 30%;
+}
+
+.value {
+    margin-left: 20%
+}
+
+
+/*Style of the whole container*/
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 95vw;
+    max-width: 600px;
+    min-height: 92vh;
+    border-radius: 18px 18px 15px 15px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/*Title and Clear Localstorage Button Style*/
+
+.header {
+    background: linear-gradient(135deg, rgba(64, 64, 64, 0.7) -10%, rgba(64, 64, 64, 0.8) 180%), url(../img/background.jpg);
+    border-radius: 15px 15px 0 0;
+    color: #FFF;
+    width: 100%;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    width: 95%;
+    margin: 20px 0 50px 2.5%;
+}
+
+.title h1 {
+    width: 100%;
+    padding-left: 15%;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.5s;
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 1024px) {
+    .clear:hover {
+        color: #ff0000;
+    }
+}
+
+
+/*popup clear all style*/
+
+.popupClearAll {
+    cursor: pointer;
+    position: absolute;
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.popupClearAll .popuptextClearAll {
+    visibility: hidden;
+    width: 200px;
+    background: linear-gradient(135deg, rgba(64, 64, 64, 0.7) -10%, rgba(64, 64, 64, 0.8) 180%), url(../img/background.jpg);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 0;
+    position: fixed;
+    transform: translate(100%, 300%);
+}
+
+.popupClearAll .popuptextClearAll div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.popupClearAll .popuptextClearAll div .trashAccepted {
+    width: 60px;
+    height: 30px;
+    margin: 10px 5px 0 0;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: opacity 0.3s;
+}
+
+.popupClearAll .popuptextClearAll div .trashCancel {
+    width: 60px;
+    height: 30px;
+    margin: 10px 0 0 5px;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: opacity 0.3s;
+}
+
+@media (min-width: 1024px) {
+    .popupClearAll .popuptextClearAll div .trashAccepted:hover {
+        opacity: 0.7;
+    }
+    .popupClearAll .popuptextClearAll div .trashCancel:hover {
+        opacity: 0.7;
+    }
+}
+
+.popupClearAll .show {
+    visibility: visible;
+}
+
+
+/*style of statistics*/
+
+.statistics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.statistics li {
+    width: 85%;
+}
+
+.statistics li p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.statistics li span {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+
+/*Add task container style*/
+
+.addList {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    width: 95%;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0D0D0D;
+    border-bottom-style: dotted;
+}
+
+.addList #input {
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    background: #FFF;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.addList #input:hover {
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #AAA;
+}
+
+.addList #input:focus {
+    outline: 0;
+    border: 1px solid #999;
+}
+
+#inputDone {
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    background: #FFF;
+    padding: 8px;
+    font-size: 16px;
+    width: 50%;
+}
+
+.addList i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 1024px) {
+    .addList i:hover {
+        color: #008000;
+        transform: scale(1.2);
+    }
+}
+
+
+/*Style of added tasks*/
+
+.content {
+    width: 95%;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+.item .checkBtn,
+.item .containerTrash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.item .checked {
+    color: #008000;
+}
+
+@media (min-width: 1024px) {
+    .item .trashBtn:hover {
+        color: #ff0000;
+    }
+    .item .checkBtn:hover {
+        color: #008000;
+    }
+}
+
+.item .lineThrough {
+    text-decoration: line-through;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.text {
+    border-bottom: 1px solid #0D0D0D;
+    border-bottom-style: dotted;
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.text:focus {
+    outline: 0;
+    opacity: 0.8;
+}
+
+
+/*popup style*/
+
+.popup {
+    cursor: pointer;
+    position: absolute;
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background: linear-gradient(135deg, rgba(64, 64, 64, 0.7) -10%, rgba(64, 64, 64, 0.8) 180%), url(../img/background.jpg);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 0;
+    font-size: 18px;
+    position: fixed;
+    transform: translate(252%, -104%);
+}
+
+.popup .popuptext div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.popup .popuptext div .trashAccepted {
+    width: 60px;
+    height: 30px;
+    margin: 10px 5px 0 0;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: opacity 0.3s;
+}
+
+.popup .popuptext div .trashCancel {
+    width: 60px;
+    height: 30px;
+    margin: 10px 0 0 5px;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: opacity 0.3s;
+}
+
+@media (min-width: 1024px) {
+    .popup .popuptext div .trashAccepted:hover {
+        opacity: 0.7;
+    }
+    .popup .popuptext div .trashCancel:hover {
+        opacity: 0.7;
+    }
+}
+
+@media (min-width: 1024px) {
+    .popupDone div .trashAccepted:hover {
+        opacity: 0.7;
+    }
+    .popupDone div .trashCancel:hover {
+        opacity: 0.7;
+    }
+}
+
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: 55px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #581b02 transparent transparent transparent;
+}
+
+.popup .show {
+    visibility: visible;
+}
+
+.popupDone {
+    cursor: pointer;
+    position: absolute;
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.popupDone .popuptextDone {
+    visibility: hidden;
+    width: 260px;
+    background: linear-gradient(135deg, rgba(64, 64, 64, 0.7) -10%, rgba(64, 64, 64, 0.8) 180%), url(../img/background.jpg);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px 0;
+    font-size: 18px;
+    position: fixed;
+    transform: translate(5%, -104%);
+}
+
+.popupDone .popuptextDone div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.popupDone .popuptextDone div .trashAccepted {
+    width: 50px;
+    height: 30px;
+    margin: 10px 5px 0 6px;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: opacity 0.3s;
+}
+
+.popupDone .popuptextDone div .trashCancel {
+    width: 50px;
+    height: 30px;
+    margin: 10px 0 0 3px;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    transition: opacity 0.3s;
+}
+
+.popupDone .popuptextDone ::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -17%;
+    margin-left: 55px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #581b02 transparent transparent transparent;
+}
+
+.popupDone .show {
+    visibility: visible;
+}
+
+
+/*Footer Style*/
+
+footer {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 2vh 0;
+    opacity: 0.7;
+}

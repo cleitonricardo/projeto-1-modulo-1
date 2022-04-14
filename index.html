@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de compras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <section class="header">
+            <!-- title -->
+            <div class="title">
+                <h1>Lista de Compras</h1>
+                <!-- clear local storage button -->
+                <i class="clear material-icons" id="clearBtn" onclick="popupClearAll()">delete_sweep</i>
+                <!--Popup Clear All-->
+                <div class="popupClearAll" id="popupClearAll">
+                    <span class="popuptextClearAll" id="myPopupClearAll">Apagar Tudo?
+                        <div>
+                            <button class="material-icons trashAccepted" onclick="clearAll()">done</button>
+                            <button class="material-icons trashCancel" onclick="popupClearAll()">close</button>
+                        </div>
+                    </span>
+                </div>
+                <div class="total">
+                    <p>Total</p>
+                    <p class="sifrao">R$</p>
+                    <span class="value" id="spending">0</span>
+                </div>
+            </div>
+        </section>
+        <!-- write and add task -->
+        <section class="addList">
+            <input type="text" id="input" placeholder="Adicionar um novo item" maxlength="100">
+            <i class="addBtn material-icons" onclick="addList()">add_circle</i>
+        </section>
+        <!-- tasks -->
+        <section class="content">
+            <ul id="list"></ul>
+        </section>
+    </div>
+    <footer>
+        <p>© 2022 Copyright - Cleiton Ricardo Spagnol</p>
+    </footer>
+    <script defer src="./js/script.js"></script>
+</body>
+
+</html>
