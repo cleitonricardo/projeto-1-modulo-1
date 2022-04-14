@@ -161,7 +161,7 @@ function remove(id) {
 function totalCalc() {
     let total = 0
     list.filter(item => item.done == true).forEach(item => total += item.value)
-    spending.innerHTML = String(total).replace('.', ',');
+    spending.innerHTML = String(total.toFixed(2)).replace('.', ',');
 }
 //function to complete task
 function completeList(id, inputID) {
@@ -200,10 +200,6 @@ function removeList(id) {
     function checkArray(currentArray) {
         return currentArray.id === id
     }
-
-    var vam = currentArray.value;
-    var mi = parseFloat(spending.innerHTML.replace(',', '.'));
-    spending.innerHTML = (mi - vam).toFixed(2).replace('.', ',');
 
     list.splice(list.indexOf(currentArray), 1);
     saveLocal();
