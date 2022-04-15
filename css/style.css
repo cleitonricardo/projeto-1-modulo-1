@@ -12,7 +12,7 @@
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0;
+    git margin: 0;
 }
 
 
@@ -202,32 +202,6 @@ body {
 
 .popupClearAll .show {
     visibility: visible;
-}
-
-
-/*style of statistics*/
-
-.statistics {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    list-style: none;
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.statistics li {
-    width: 85%;
-}
-
-.statistics li p {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.statistics li span {
-    font-weight: bold;
-    font-size: 22px;
 }
 
 
@@ -535,14 +509,4 @@ body {
 
 .popupDone .show {
     visibility: visible;
-}
-
-
-/*Footer Style*/
-
-footer {
-    font-size: 12px;
-    font-weight: 600;
-    margin: 2vh 0;
-    opacity: 0.7;
 }
