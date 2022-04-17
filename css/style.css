@@ -236,7 +236,7 @@ body {
     border: 1px solid #999;
 }
 
-#inputDone {
+.inputValue {
     border: 1px solid #CCC;
     border-radius: 5px;
     background: #FFF;
@@ -500,7 +500,7 @@ body {
     content: "";
     position: absolute;
     top: 100%;
-    left: -17%;
+    left: -18%;
     margin-left: 55px;
     border-width: 5px;
     border-style: solid;

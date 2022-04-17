@@ -94,7 +94,7 @@ function addShopping(shopping, id, done) {
 			<div class="popupDone" id="popupDone${id}">
 				<span class="popuptextDone" id="mypopupDone${id}">Valor
 					<div>
-						<input type="number" id="inputDone${id}" placeholder="R$" maxlength="100">
+						<input class="inputValue" type="number" id="inputDone${id}" placeholder="R$" maxlength="100">
 						<button class="material-icons trashAccepted" onclick="completeList(${id}, inputDone${id})">done</button>
 						<button class="material-icons trashCancel" onclick="popupDone(${id})">close</button>
 					</div>
