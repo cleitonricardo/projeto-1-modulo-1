@@ -30,8 +30,9 @@ body {
     flex-direction: column;
     width: 100vw;
     min-height: 90vh;
-    background: #dcdcdc;
+    background: #bf89f1;
     overflow-x: hidden;
+    background-image: linear-gradient(to right, blue, #00ffff);
 }
 
 .total {
