@@ -1,13 +1,13 @@
-var input = document.getElementById('input');
-var checkIcon = "check_circle";
-var uncheckIcon = "radio_button_unchecked";
-var lineThrough = "lineThrough";
-var spending = document.getElementById('spending');
+let input = document.getElementById('input');
+let checkIcon = "check_circle";
+let uncheckIcon = "radio_button_unchecked";
+let lineThrough = "lineThrough";
+let spending = document.getElementById('spending');
 
 
 //function that opens the confirmation popup for clear all
 function popupClearAll() {
-    var myPopupClearAll = document.getElementById("myPopupClearAll");
+    let myPopupClearAll = document.getElementById("myPopupClearAll");
 
     myPopupClearAll.classList.toggle("show");
 }
@@ -22,7 +22,7 @@ let list = [],
     id = 0;
 
 //when starting it checks if there is something in the localstorage and shows it on the screen	
-var data = localStorage.getItem('shoppingList');
+let data = localStorage.getItem('shoppingList');
 
 if (data) {
 
@@ -37,7 +37,7 @@ if (data) {
 
 
 //check the id of the last array to start counting from it
-var lastArray = list[list.length - 1]
+let lastArray = list[list.length - 1]
 
 if (lastArray == undefined) {
     id = 0
@@ -49,7 +49,7 @@ if (lastArray == undefined) {
 
 //function that adds tasks to array and saves to localstorage
 function addList() {
-    var shopping = input.value.trim();
+    let shopping = input.value.trim();
 
     if (shopping) {
         addShopping(shopping, id, false, 0);
@@ -70,11 +70,11 @@ function addList() {
 //function that creates objects on the screen
 function addShopping(shopping, id, done) {
 
-    var DONE = done ? checkIcon : uncheckIcon;
-    var LINE = done ? lineThrough : '';
-    var CHECKED = done ? 'checked' : '';
-    var CONTENTEDIT = done ? false : true;
-    var item = `
+    let DONE = done ? checkIcon : uncheckIcon;
+    let LINE = done ? lineThrough : '';
+    let CHECKED = done ? 'checked' : '';
+    let CONTENTEDIT = done ? false : true;
+    let item = `
 		<li class="item">
 			<i class="material-icons checkBtn ${CHECKED}" onclick="popupDone(${id})" id="${id}">${DONE}</i>
 			<div>
@@ -107,11 +107,11 @@ function addShopping(shopping, id, done) {
 
 //function that opens the confirmation popup for task deletion
 function popup(id) {
-    var myPopup = document.getElementById("myPopup" + id);
-    var trashBtn = document.getElementById("trashBtn" + id);
-    var popup = document.getElementById("popup" + id)
+    let myPopup = document.getElementById("myPopup" + id);
+    let trashBtn = document.getElementById("trashBtn" + id);
+    let popup = document.getElementById("popup" + id)
 
-    var coordinates = trashBtn.getBoundingClientRect();
+    let coordinates = trashBtn.getBoundingClientRect();
 
     popup.style.top = coordinates.top
     popup.style.left = coordinates.left
@@ -128,10 +128,10 @@ function popupDone(id) {
         return currentArray.id === id
     }
     if (currentArray.done == false) {
-        var mypopupDone = document.getElementById("mypopupDone" + id);
-        var trashBtn = document.getElementById("trashBtn" + id);
-        var popupDone = document.getElementById("popupDone" + id)
-        var coordinates = trashBtn.getBoundingClientRect();
+        let mypopupDone = document.getElementById("mypopupDone" + id);
+        let trashBtn = document.getElementById("trashBtn" + id);
+        let popupDone = document.getElementById("popupDone" + id)
+        let coordinates = trashBtn.getBoundingClientRect();
 
         popupDone.style.top = coordinates.top
         popupDone.style.right = coordinates.right
@@ -145,8 +145,8 @@ function popupDone(id) {
 //function that removes items from the list
 function remove(id) {
     let currentArray = list.find(checkArray)
-    var element = document.getElementById(id)
-    var text = document.getElementById('text' + id)
+    let element = document.getElementById(id)
+    let text = document.getElementById('text' + id)
 
     function checkArray(currentArray) {
         return currentArray.id === id
@@ -169,12 +169,12 @@ function totalCalc() {
 
 //function to complete task
 function completeList(id, inputID) {
-    var mypopupDone = document.getElementById("mypopupDone" + id);
-    var price = parseFloat(inputID.value.trim().replace(',', '.'));
-    var element = document.getElementById(id)
+    let mypopupDone = document.getElementById("mypopupDone" + id);
+    let price = parseFloat(inputID.value.trim().replace(',', '.'));
+    let element = document.getElementById(id)
     let currentArray = list.find(checkArray)
-    var check = document.getElementById(element.id).innerHTML;
-    var text = document.getElementById('text' + id)
+    let check = document.getElementById(element.id).innerHTML;
+    let text = document.getElementById('text' + id)
 
     function checkArray(currentArray) {
         return currentArray.id === id
@@ -194,7 +194,7 @@ function completeList(id, inputID) {
 
 //function to remove task
 function removeList(id) {
-    var element = document.getElementById(id)
+    let element = document.getElementById(id)
     let currentArray = list.find(checkArray)
 
     element.parentNode.parentNode.removeChild(element.parentNode);
@@ -209,7 +209,7 @@ function removeList(id) {
 
 //function to save task change
 function makeChanges(id) {
-    var text = document.getElementById('text' + id)
+    let text = document.getElementById('text' + id)
     let currentArray = list.find(checkArray)
 
     function checkArray(currentArray) {
@@ -226,6 +226,8 @@ function characterLimit(id) {
     return (document.getElementById('text' + id).innerText.length < 99)
 }
 
+
+//function that saves to localStorage
 function saveLocal() {
     localStorage.setItem('shoppingList', JSON.stringify(list));
     totalCalc();
