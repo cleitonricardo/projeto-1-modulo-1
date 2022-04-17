@@ -119,6 +119,7 @@ function popup(id) {
     myPopup.classList.toggle("show");
 }
 
+//function that opens the confirmation popup for task completion
 function popupDone(id) {
     let currentArray = list.find(checkArray)
 
@@ -141,6 +142,7 @@ function popupDone(id) {
     }
 }
 
+//function that removes items from the list
 function remove(id) {
     let currentArray = list.find(checkArray)
     var element = document.getElementById(id)
@@ -158,11 +160,13 @@ function remove(id) {
     saveLocal();
 }
 
+//function that calculates total amount spent
 function totalCalc() {
     let total = 0
     list.filter(item => item.done == true).forEach(item => total += item.value)
     spending.innerHTML = String(total.toFixed(2)).replace('.', ',');
 }
+
 //function to complete task
 function completeList(id, inputID) {
     var mypopupDone = document.getElementById("mypopupDone" + id);
@@ -176,7 +180,6 @@ function completeList(id, inputID) {
         return currentArray.id === id
     }
 
-
     document.getElementById(element.id).innerHTML = checkIcon
     currentArray.done = true;
     currentArray.value = price;
@@ -186,7 +189,6 @@ function completeList(id, inputID) {
 
     mypopupDone.classList.toggle("show");
     saveLocal();
-
 
 }
 
@@ -226,5 +228,7 @@ function characterLimit(id) {
 
 function saveLocal() {
     localStorage.setItem('shoppingList', JSON.stringify(list));
+    totalCalc();
+
     totalCalc();
 }
